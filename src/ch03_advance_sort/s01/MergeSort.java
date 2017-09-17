@@ -7,7 +7,9 @@ import util.ISorter;
 import util.MethodExeTimerUtil;
 
 /**
- * 归并排序 分治思想：将一个数组多次分割为小数组，对小数组排序然后再依次合并
+ * 归并排序 
+ * 自顶向下，递归实现
+ * 分治思想：将一个数组多次分割为小数组，对小数组排序然后再依次合并
  * 
  * @author Lee
  *
@@ -33,13 +35,13 @@ public class MergeSort implements ISorter {
 		int mid = (l + r) / 2;
 		mergeSort(arr, l, mid);
 		mergeSort(arr, mid, r);
-		merge(arr, l, r);
+		merge(arr, l, mid, r);
 	}
 
 	// 对arr数组中[l,r)区间进行归并
-	private void merge(int[] arr, int l, int r) {
+	static void merge(int[] arr, int l, int mid, int r) {
 		int[] aux = Arrays.copyOfRange(arr, l, r);
-		int i = l, mid = (l + r) / 2, j = mid;
+		int i = l, j = mid;
 		for (int k = l; k < r; k++) {
 			if (i >= mid)
 				arr[k] = aux[j++ - l];

@@ -1,7 +1,5 @@
 package ch03_advance_sort.s01;
 
-import java.util.Arrays;
-
 import ch02_basic_sort.s02.InsertionSortOp1;
 import util.ISorter;
 import util.MethodExeTimerUtil;
@@ -38,23 +36,9 @@ public class MergeSortOp1 implements ISorter {
 		mergeSort(arr, mid, r);
 		//若当前数组的中间值前数据和中间值数据有序，表明经过上面的递归调用后，当前arr[l,r)范围内都有序，无需再次归并
 		if (arr[mid - 1] > arr[mid])
-			merge(arr, l, r);
+			MergeSort.merge(arr, l, mid, r);
 	}
 
-	// 对arr数组中[l,r)区间进行归并
-	private void merge(int[] arr, int l, int r) {
-		int[] aux = Arrays.copyOfRange(arr, l, r);
-		int i = l, mid = (l + r) / 2, j = mid;
-		for (int k = l; k < r; k++) {
-			if (i >= mid)
-				arr[k] = aux[j++ - l];
-			else if (j >= r)
-				arr[k] = aux[i++ - l];
-			else if (aux[i - l] < aux[j - l])
-				arr[k] = aux[i++ - l];
-			else
-				arr[k] = aux[j++ - l];
-		}
-	}
+
 
 }
