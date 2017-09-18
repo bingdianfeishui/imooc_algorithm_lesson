@@ -7,8 +7,7 @@ import util.ISorter;
 import util.MethodExeTimerUtil;
 
 /**
- * ¹é²¢ÅÅĞò ÓÅ»¯2 B mergeSortBºÍmergeBÓÒ±ß½ç¸ÄÎª±ÕÇø¼ä
- * ²âÊÔ±íÃ÷£º±È¿ªÇø¼äµÄÔËĞĞ¿ì
+ * å½’å¹¶æ’åº ä¼˜åŒ–2 B mergeSortBå’ŒmergeBå³è¾¹ç•Œæ”¹ä¸ºé—­åŒºé—´
  * @author Lee
  *
  */
@@ -27,11 +26,11 @@ public class MergeSortOp2B implements ISorter {
 		return arr;
 	}
 
-	// ¶ÔarrÊı×éÖĞ[l,r]Çø¼ä½øĞĞ¹é²¢ÅÅĞò
+	// å¯¹arræ•°ç»„ä¸­[l,r]åŒºé—´è¿›è¡Œå½’å¹¶æ’åº
 	private void mergeSortB(int[] arr, int l, int r) {
 		// if (l >= r - 1)
 		// return;
-		// ¸ü¸Äµİ¹éµ½µ×µÄÅĞ¶ÏÌõ¼ş
+		// æ›´æ”¹é€’å½’åˆ°åº•çš„åˆ¤æ–­æ¡ä»¶
 		if ((r - l) < 15) {
 			InsertionSortOp1.sort(arr, l, r + 1);
 			return;
@@ -40,7 +39,7 @@ public class MergeSortOp2B implements ISorter {
 		int mid = (l + r) / 2;
 		mergeSortB(arr, l, mid);
 		mergeSortB(arr, mid + 1, r);
-		// Èôµ±Ç°Êı×éµÄÖĞ¼äÖµÇ°Êı¾İºÍÖĞ¼äÖµÊı¾İÓĞĞò£¬±íÃ÷¾­¹ıÉÏÃæµÄµİ¹éµ÷ÓÃºó£¬µ±Ç°arr[l,r]·¶Î§ÄÚ¶¼ÓĞĞò£¬ÎŞĞèÔÙ´Î¹é²¢
+		// è‹¥å½“å‰æ•°ç»„çš„ä¸­é—´å€¼å‰æ•°æ®å’Œä¸­é—´å€¼æ•°æ®æœ‰åºï¼Œè¡¨æ˜ç»è¿‡ä¸Šé¢çš„é€’å½’è°ƒç”¨åï¼Œå½“å‰arr[l,r]èŒƒå›´å†…éƒ½æœ‰åºï¼Œæ— éœ€å†æ¬¡å½’å¹¶
 		if (arr[mid] > arr[mid + 1])
 			MergeSortB.mergeB(arr, l, mid, r);
 	}

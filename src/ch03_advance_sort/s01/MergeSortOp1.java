@@ -5,9 +5,9 @@ import util.ISorter;
 import util.MethodExeTimerUtil;
 
 /**
- * ¹é²¢ÅÅĞò ÓÅ»¯1
- * ×ÓÊı×é¹é²¢Íê³Éºó£¬ÅĞ¶Ïµ±Ç°Á½¸ö×ÓÊı×éÊÇ·ñĞèÒª¹é²¢£¬¼õÉÙ¹é²¢²Ù×÷
- * ¶ÔÓÚ½üºõÓĞĞòµÄÊı×éÅÅĞò£¬½¨Òé²ÉÓÃ´ËÓÅ»¯
+ * å½’å¹¶æ’åº ä¼˜åŒ–1
+ * å­æ•°ç»„å½’å¹¶å®Œæˆåï¼Œåˆ¤æ–­å½“å‰ä¸¤ä¸ªå­æ•°ç»„æ˜¯å¦éœ€è¦å½’å¹¶ï¼Œå‡å°‘å½’å¹¶æ“ä½œ
+ * å¯¹äºè¿‘ä¹æœ‰åºçš„æ•°ç»„æ’åºï¼Œå»ºè®®é‡‡ç”¨æ­¤ä¼˜åŒ–
  * 
  * @author Lee
  *
@@ -15,7 +15,7 @@ import util.MethodExeTimerUtil;
 public class MergeSortOp1 implements ISorter {
 	public static void main(String[] args) {
 		int n = 50000;
-//		int swapTimes = 0;	//¶ÔÓÚÍêÈ«ÓĞĞòµÄÊı×é£¬ÎŞÂÛÊÇ·ñÓÅ»¯£¬¹é²¢ÅÅĞò¶¼±È²åÈëÅÅĞòÂı
+//		int swapTimes = 0;	//å¯¹äºå®Œå…¨æœ‰åºçš„æ•°ç»„ï¼Œæ— è®ºæ˜¯å¦ä¼˜åŒ–ï¼Œå½’å¹¶æ’åºéƒ½æ¯”æ’å…¥æ’åºæ…¢
 		int swapTimes = n/100;
 		ISorter[] sorters = { new InsertionSortOp1(), new MergeSort(), new MergeSortOp1() };
 		MethodExeTimerUtil.batchSortIntMethodsExecution(sorters, n, swapTimes);
@@ -27,14 +27,14 @@ public class MergeSortOp1 implements ISorter {
 		return arr;
 	}
 
-	// ¶ÔarrÊı×éÖĞ[l,r)Çø¼ä½øĞĞ¹é²¢ÅÅĞò
+	// å¯¹arræ•°ç»„ä¸­[l,r)åŒºé—´è¿›è¡Œå½’å¹¶æ’åº
 	private void mergeSort(int[] arr, int l, int r) {
 		if (l >= r - 1)
 			return;
 		int mid = (l + r) / 2;
 		mergeSort(arr, l, mid);
 		mergeSort(arr, mid, r);
-		//Èôµ±Ç°Êı×éµÄÖĞ¼äÖµÇ°Êı¾İºÍÖĞ¼äÖµÊı¾İÓĞĞò£¬±íÃ÷¾­¹ıÉÏÃæµÄµİ¹éµ÷ÓÃºó£¬µ±Ç°arr[l,r)·¶Î§ÄÚ¶¼ÓĞĞò£¬ÎŞĞèÔÙ´Î¹é²¢
+		//è‹¥å½“å‰æ•°ç»„çš„ä¸­é—´å€¼å‰æ•°æ®å’Œä¸­é—´å€¼æ•°æ®æœ‰åºï¼Œè¡¨æ˜ç»è¿‡ä¸Šé¢çš„é€’å½’è°ƒç”¨åï¼Œå½“å‰arr[l,r)èŒƒå›´å†…éƒ½æœ‰åºï¼Œæ— éœ€å†æ¬¡å½’å¹¶
 		if (arr[mid - 1] > arr[mid])
 			MergeSort.merge(arr, l, mid, r);
 	}

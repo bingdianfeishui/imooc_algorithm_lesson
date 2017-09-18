@@ -6,7 +6,7 @@ import java.lang.reflect.Type;
 import java.util.Arrays;
 
 /**
- * 简单泛型对象的选择排序
+ * 绠�鍗曟硾鍨嬪璞＄殑閫夋嫨鎺掑簭
  * @author Lee
  *
  */
@@ -18,11 +18,11 @@ public class SelectionSortGeneric {
 		System.out.println(Arrays.toString(arr));
 
 		Student[] stus = { new Student("B", 90), new Student("A", 90), new Student("C", 95), new Student("D", 80) };
-		// 得到泛型方法 方法1
+		// 寰楀埌娉涘瀷鏂规硶 鏂规硶1
 		// Method me2 = SelectionSortGeneric.class.getMethod("selectionSort", Comparable[].class);
 		// me2.invoke(SelectionSortGeneric.class, new Object[]{stus});
 
-		// 另一种得到泛型方法的方法
+		// 鍙︿竴绉嶅緱鍒版硾鍨嬫柟娉曠殑鏂规硶
 		Method[] mes = SelectionSortGeneric.class.getMethods();
 		for (Method m : mes) {
 			Type[] types = m.getGenericParameterTypes();

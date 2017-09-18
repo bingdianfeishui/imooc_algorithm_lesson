@@ -21,15 +21,15 @@ public class MethodExeTimerUtil {
 		int[] randomArr = DataSourceUtil.generateRandomIntArr(arrSize, arrSize);
 		int[] sortedArr = DataSourceUtil.generateAlmostSortedIntArr(arrSize, swapTimes);
 
-		System.out.println("随机数组：size=" + arrSize);
+		System.out.println("闅忔満鏁扮粍锛歴ize=" + arrSize);
 		batchExecuteSorters(sorters, randomArr);
 
-		System.out.println("\n近乎有序数组：size=" + arrSize + ", swapTimes=" + swapTimes);
+		System.out.println("\n杩戜箮鏈夊簭鏁扮粍锛歴ize=" + arrSize + ", swapTimes=" + swapTimes);
 		batchExecuteSorters(sorters, sortedArr);
 
 	}
 
-	// 批量运行排序器并打印时间结果
+	// 鎵归噺杩愯鎺掑簭鍣ㄥ苟鎵撳嵃鏃堕棿缁撴灉
 	private static void batchExecuteSorters(ISorter[] sorters, int[] sourceData) {
 		List<ExecutionResult> resultList = new ArrayList<>();
 		for (ISorter sorter : sorters) {
@@ -121,7 +121,7 @@ public class MethodExeTimerUtil {
 
 			ExecutionResult exeRs = getMethodExecuteTimeAndReturnValue(bean, me, params);
 
-			// 恢复访问权限
+			// 鎭㈠璁块棶鏉冮檺
 			me.setAccessible(accessible);
 
 			if (isPrintTime) {

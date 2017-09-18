@@ -1,39 +1,36 @@
 package ch03_advance_sort.s01;
 
-import ch02_basic_sort.s02.InsertionSortOp1;
 import util.ISorter;
 import util.MethodExeTimerUtil;
 
 /**
- * ¹é²¢ÅÅĞò ×Ôµ×ÏòÉÏµÄÊµÏÖ·½Ê½ Bottom Up
- * 
+ * å½’å¹¶æ’åº è‡ªåº•å‘ä¸Šçš„å®ç°æ–¹å¼ Bottom Up
+ * éé€’å½’å®ç°ï¼Œé‡‡ç”¨å¾ªç¯
  * @author Lee
  *
  */
 public class MergeSortBU implements ISorter {
 	public static void main(String[] args) {
-		int n = 42123;
-		int swapTimes = n / 100;
-		ISorter[] sorters = { new InsertionSortOp1(), new MergeSort(), new MergeSortB(),
-				new MergeSortOp1(), new MergeSortOp1B(),new MergeSortOp2(), new MergeSortOp2B(),new MergeSortBU() };
+		int n = 902123;
+		int swapTimes = n / 10000;
+		ISorter[] sorters = {new MergeSort(), new MergeSortB(), new MergeSortOp1(),
+				new MergeSortOp1B(), new MergeSortOp2(), new MergeSortOp2B(), new MergeSortBU() };
 		MethodExeTimerUtil.batchSortIntMethodsExecution(sorters, n, swapTimes);
 	}
 
 	@Override
 	public int[] sort(int[] arr) {
-		mergeSort(arr, 0, arr.length);
+		mergeSortBU(arr);
 		return arr;
 	}
 
-	// ¶ÔarrÊı×éÖĞ[l,r)Çø¼ä½øĞĞ¹é²¢ÅÅĞò
-	private void mergeSort(int[] arr, int l, int r) {
-		if (l >= r - 1)
-			return;
+	// å¯¹arræ•°ç»„è¿›è¡Œå½’å¹¶æ’åºï¼Œéé€’å½’å®ç°
+	private void mergeSortBU(int[] arr) {
 
 		for (int sz = 1; sz < arr.length; sz += sz) {
 			for (int i = 0; i + sz <= arr.length; i += sz + sz) {
+				// å¯¹arr[i, i+sz] å’Œarr[i+sz+1, i+sz+sz]è¿›è¡Œå½’å¹¶
 				MergeSort.merge(arr, i, i + sz, Math.min(arr.length, i + sz + sz));
-				// merge(arr, i, i+sz, Math.min(arr.length, i + sz + sz));
 			}
 		}
 	}

@@ -4,12 +4,12 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class DataSourceUtil {
-	// Éú³É³¤¶ÈÎªn£¬·¶Î§Îª[0, r)µÄËæ»úÕûÊıÊı×é
+	// ç”Ÿæˆé•¿åº¦ä¸ºnï¼ŒèŒƒå›´ä¸º[0, r)çš„éšæœºæ•´æ•°æ•°ç»„
 	public static int[] generateRandomIntArr(int n, int r) {
 		return generateRandomIntArr(n, 0, r);
 	}
 
-	// Éú³É³¤¶ÈÎªn£¬·¶Î§Îª[l, r)µÄËæ»úÕûÊıÊı×é
+	// ç”Ÿæˆé•¿åº¦ä¸ºnï¼ŒèŒƒå›´ä¸º[l, r)çš„éšæœºæ•´æ•°æ•°ç»„
 	public static int[] generateRandomIntArr(int n, int l, int r) {
 		int[] arr = new int[n];
 		Random seed = new Random(System.currentTimeMillis());
@@ -19,8 +19,8 @@ public class DataSourceUtil {
 		return arr;
 	}
 
-	// Éú³É³¤¶ÈÎªn£¬½üºõÓĞĞòµÄ[0,n)·¶Î§ÄÚµÄÊı×é
-	// Ô­Àí£ºÓÃ[0,n)Ìî³äÊı×é£¬È»ºóËæ»úÑ¡Á½¸öÊı½»»»swapTimes´Î
+	// ç”Ÿæˆé•¿åº¦ä¸ºnï¼Œè¿‘ä¹æœ‰åºçš„[0,n)èŒƒå›´å†…çš„æ•°ç»„
+	// åŸç†ï¼šç”¨[0,n)å¡«å……æ•°ç»„ï¼Œç„¶åéšæœºé€‰ä¸¤ä¸ªæ•°äº¤æ¢swapTimesæ¬¡
 	public static int[] generateAlmostSortedIntArr(int n, int swapTimes) {
 		int[] arr = new int[n];
 		for (int i = 0; i < n; i++) {

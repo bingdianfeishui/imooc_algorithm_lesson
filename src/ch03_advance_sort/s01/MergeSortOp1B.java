@@ -4,8 +4,7 @@ import util.DataSourceUtil;
 import util.ISorter;
 
 /**
- * ¹é²¢ÅÅÐò ÓÅ»¯1 B Óë¹é²¢ÅÅÐò ÓÅ»¯1µÄÇø±ð£º½«mergeSortB mergeBÓÒ±ß½ç¸ÄÎª±ÕÇø¼ä
- * ²âÊÔ±íÃ÷£º±È¿ªÇø¼äµÄÔËÐÐÂý
+ * å½’å¹¶æŽ’åº ä¼˜åŒ–1 B ä¸Žå½’å¹¶æŽ’åº ä¼˜åŒ–1çš„åŒºåˆ«ï¼šå°†mergeSortB mergeBå³è¾¹ç•Œæ”¹ä¸ºé—­åŒºé—´
  * @author Lee
  *
  */
@@ -22,14 +21,14 @@ public class MergeSortOp1B implements ISorter {
 		return arr;
 	}
 
-	// ¶ÔarrÊý×éÖÐ[l,r]Çø¼ä½øÐÐ¹é²¢ÅÅÐò
+	// å¯¹arræ•°ç»„ä¸­[l,r]åŒºé—´è¿›è¡Œå½’å¹¶æŽ’åº
 	private void mergeSortB(int[] arr, int l, int r) {
 		if (l >= r)
 			return;
 		int mid = (l + r) / 2;
 		mergeSortB(arr, l, mid);
 		mergeSortB(arr, mid + 1, r);
-		// Èôµ±Ç°Êý×éµÄÖÐ¼äÖµÇ°Êý¾ÝºÍÖÐ¼äÖµÊý¾ÝÓÐÐò£¬±íÃ÷¾­¹ýÉÏÃæµÄµÝ¹éµ÷ÓÃºó£¬µ±Ç°arr[l,r]·¶Î§ÄÚ¶¼ÓÐÐò£¬ÎÞÐèÔÙ´Î¹é²¢
+		// è‹¥å½“å‰æ•°ç»„çš„ä¸­é—´å€¼å‰æ•°æ®å’Œä¸­é—´å€¼æ•°æ®æœ‰åºï¼Œè¡¨æ˜Žç»è¿‡ä¸Šé¢çš„é€’å½’è°ƒç”¨åŽï¼Œå½“å‰arr[l,r]èŒƒå›´å†…éƒ½æœ‰åºï¼Œæ— éœ€å†æ¬¡å½’å¹¶
 		if (arr[mid] > arr[mid + 1])
 			MergeSortB.mergeB(arr, l, mid, r);
 	}

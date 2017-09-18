@@ -6,9 +6,8 @@ import util.ISorter;
 import util.MethodExeTimerUtil;
 
 /**
- * 归并排序 
- * 与普通版的唯一区别：将mergeSort和merge右边界改为闭区间
- * 测试表明：比开区间的运行慢
+ * 褰掑苟鎺掑簭 
+ * 涓庢櫘閫氱増鐨勫敮涓�鍖哄埆锛氬皢mergeSort鍜宮erge鍙宠竟鐣屾敼涓洪棴鍖洪棿
  * @author Lee
  *
  */
@@ -26,7 +25,7 @@ public class MergeSortB implements ISorter {
 		return arr;
 	}
 
-	// 对arr数组中[l,r]区间进行归并排序
+	// 瀵筧rr鏁扮粍涓璠l,r]鍖洪棿杩涜褰掑苟鎺掑簭
 	private void mergeSortB(int[] arr, int l, int r) {
 		if (l >= r)
 			return;
@@ -36,7 +35,7 @@ public class MergeSortB implements ISorter {
 		mergeB(arr, l, mid, r);
 	}
 
-	// 对arr数组中[l,r]区间进行归并
+	// 瀵筧rr鏁扮粍涓璠l,r]鍖洪棿杩涜褰掑苟
 	static void mergeB(int[] arr, int l, int mid, int r) {
 		int[] aux = Arrays.copyOfRange(arr, l, r + 1);
 		int i = l, j = mid + 1;

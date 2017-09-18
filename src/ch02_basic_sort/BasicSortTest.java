@@ -12,7 +12,7 @@ public class BasicSortTest {
 	public static void main(String[] args) throws Exception {
 		int n = 50000;
 		int swapTimes = n / 100;
-		// 冒泡排序太慢，不带他玩儿
+		// 鍐掓场鎺掑簭澶參锛屼笉甯︿粬鐜╁効
 //		ISorter[] sorters = { new BubbleSort(), new BubbleSortOp1(), new BubbleSortOp2(), new SelectionSort(),
 //				new InsertionSort(), new InsertionSortOp1(), new ShellSort(), new ShellSortOp1() };
 		ISorter[] sorters = { new SelectionSort(), new InsertionSort(), new InsertionSortOp1(), new ShellSort(),

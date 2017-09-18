@@ -7,9 +7,9 @@ import util.ISorter;
 import util.MethodExeTimerUtil;
 
 /**
- * ¹é²¢ÅÅĞò 
- * ×Ô¶¥ÏòÏÂ£¬µİ¹éÊµÏÖ
- * ·ÖÖÎË¼Ïë£º½«Ò»¸öÊı×é¶à´Î·Ö¸îÎªĞ¡Êı×é£¬¶ÔĞ¡Êı×éÅÅĞòÈ»ºóÔÙÒÀ´ÎºÏ²¢
+ * å½’å¹¶æ’åº 
+ * è‡ªé¡¶å‘ä¸‹ï¼Œé€’å½’å®ç°
+ * åˆ†æ²»æ€æƒ³ï¼šå°†ä¸€ä¸ªæ•°ç»„å¤šæ¬¡åˆ†å‰²ä¸ºå°æ•°ç»„ï¼Œå¯¹å°æ•°ç»„æ’åºç„¶åå†ä¾æ¬¡åˆå¹¶
  * 
  * @author Lee
  *
@@ -28,7 +28,7 @@ public class MergeSort implements ISorter {
 		return arr;
 	}
 
-	// ¶ÔarrÊı×éÖĞ[l,r)Çø¼ä½øĞĞ¹é²¢ÅÅĞò
+	// å¯¹arræ•°ç»„ä¸­[l,r)åŒºé—´è¿›è¡Œå½’å¹¶æ’åº
 	private void mergeSort(int[] arr, int l, int r) {
 		if (l >= r - 1)
 			return;
@@ -38,7 +38,7 @@ public class MergeSort implements ISorter {
 		merge(arr, l, mid, r);
 	}
 
-	// ¶ÔarrÊı×éÖĞ[l,r)Çø¼ä½øĞĞ¹é²¢
+	// å¯¹arræ•°ç»„ä¸­[l,r)åŒºé—´è¿›è¡Œå½’å¹¶
 	static void merge(int[] arr, int l, int mid, int r) {
 		int[] aux = Arrays.copyOfRange(arr, l, r);
 		int i = l, j = mid;

@@ -5,9 +5,9 @@ import util.ISorter;
 import util.MethodExeTimerUtil;
 
 /**
- * ������������
- * �ص㣺��������������O(n^2)�����Ի����������������ǳ��죬��С�ɵ�O(n)
- * ��ǰԪ��������ǰһ��Ԫ�رȽϽ���(ǰ���Ԫ����֮ǰ��ѭ���Ѿ��������)
+ * 基本插入排序
+ * 特点：对乱序数组排序O(n^2)，但对基本有序的数组排序非常快，最小可到O(n)
+ * 当前元素依次与前一个元素比较交换(前面的元素在之前的循环已经排序完成)
  * @author Lee
  *
  */
@@ -21,7 +21,7 @@ public class InsertionSort implements ISorter{
 
 	public int[] sort(int[] arr) {
 		for (int i = 1; i < arr.length; i++) {
-			//�ӵ�ǰ��ǰ�Һ���λ�ò��룬�ȵ�ǰԪ�ش��Ԫ�����������
+			//从当前往前找合适位置插入，比当前元素大的元素依次向后移
 			for (int j = i; j > 0 && arr[j] < arr[j - 1]; j--) {
 				DataSourceUtil.swap(arr, j, j - 1);
 			}

@@ -5,7 +5,7 @@ import util.ISorter;
 import util.MethodExeTimerUtil;
 
 /**
- * 选择排序 O(n^2)
+ * 閫夋嫨鎺掑簭 O(n^2)
  * @author Lee
  *
  */
@@ -19,9 +19,9 @@ public class SelectionSort implements ISorter{
 	}
 
 	/**
-	 * 选择排序
-	 * 时间复杂度O(n^2)
-	 * 实现思想：两层循环，内层循环每次选出剩下的序列中最小值的索引，然后与当前元素对调
+	 * 閫夋嫨鎺掑簭
+	 * 鏃堕棿澶嶆潅搴(n^2)
+	 * 瀹炵幇鎬濇兂锛氫袱灞傚惊鐜紝鍐呭眰寰幆姣忔閫夊嚭鍓╀笅鐨勫簭鍒椾腑鏈�灏忓�肩殑绱㈠紩锛岀劧鍚庝笌褰撳墠鍏冪礌瀵硅皟
 	 */
 	public int[] sort(int[] arr) {
 		for(int i = 0; i < arr.length; i++){

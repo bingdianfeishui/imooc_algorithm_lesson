@@ -8,7 +8,7 @@ import util.ISorter;
 import util.MethodExeTimerUtil;
 
 /**
- * 冒泡排序优化1 若某次循环没有进行交换，说明已排序完成，提前结束
+ * 鍐掓场鎺掑簭浼樺寲1 鑻ユ煇娆″惊鐜病鏈夎繘琛屼氦鎹紝璇存槑宸叉帓搴忓畬鎴愶紝鎻愬墠缁撴潫
  * 
  * @author 60238
  *
