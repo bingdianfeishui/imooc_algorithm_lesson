@@ -9,28 +9,31 @@ import java.util.Comparator;
 import java.util.List;
 
 public class MethodExeTimerUtil {
-	public static void batchSortIntMethodsExecution(ISorter[] sorters) {
-		batchSortIntMethodsExecution(sorters, 500);
-	}
-
-	public static void batchSortIntMethodsExecution(ISorter[] sorters, int swapTimes) {
-		batchSortIntMethodsExecution(sorters, 50000, swapTimes);
-	}
 
 	public static void batchSortIntMethodsExecution(ISorter[] sorters, int arrSize, int swapTimes) {
-		int[] randomArr = DataSourceUtil.generateRandomIntArr(arrSize, arrSize);
+		batchSortIntMethodsExecution(sorters, arrSize, arrSize, swapTimes, false);
+	}
+
+	public static void batchSortIntMethodsExecution(ISorter[] sorters, int arrSize, int upbound, int swapTimes) {
+		batchSortIntMethodsExecution(sorters, arrSize, upbound, swapTimes, false);
+	}
+
+	public static void batchSortIntMethodsExecution(ISorter[] sorters, int arrSize, int upbound, int swapTimes,
+			boolean isPrintExceptionDetail) {
+		int[] randomArr = DataSourceUtil.generateRandomIntArr(arrSize, upbound);
+
+		System.out.printf("Random int Array： size=%d,range[0,%d)\n", arrSize, upbound);
+		batchExecuteSorters(sorters, randomArr, isPrintExceptionDetail);
+
 		int[] sortedArr = DataSourceUtil.generateAlmostSortedIntArr(arrSize, swapTimes);
-
-		System.out.println("随机数组：size=" + arrSize);
-		batchExecuteSorters(sorters, randomArr);
-
-		System.out.println("\n近乎有序数组：size=" + arrSize + ", swapTimes=" + swapTimes);
-		batchExecuteSorters(sorters, sortedArr);
+		System.out.printf("\nNearly Sorted int Array： size=%d, range=[0,%d), swapTimes=%d\n", arrSize, arrSize,
+				swapTimes);
+		batchExecuteSorters(sorters, sortedArr, isPrintExceptionDetail);
 
 	}
 
 	// 批量运行排序器并打印时间结果
-	private static void batchExecuteSorters(ISorter[] sorters, int[] sourceData) {
+	public static void batchExecuteSorters(ISorter[] sorters, int[] sourceData, boolean isPrintExceptionDetail) {
 		List<ExecutionResult> resultList = new ArrayList<>();
 		for (ISorter sorter : sorters) {
 			int[] tempParams = Arrays.copyOf(sourceData, sourceData.length);
@@ -43,10 +46,13 @@ public class MethodExeTimerUtil {
 					exeRs.methodName = "[SORTED]    " + exeRs.methodName;
 				resultList.add(exeRs);
 			} catch (Exception e) {
-				System.out.printf("%s.sort(int[] arr) exectpion: %s\n", sorter.getClass().getName(), e.getMessage());
+				System.out.printf("%s.sort(int[] arr) exectpion: %s\n", sorter.getClass().getName(),
+						e.getCause().toString());
+				if (isPrintExceptionDetail)
+					e.printStackTrace();
 			}
 		}
-//		sortExecutionResult(resultList);
+		// sortExecutionResult(resultList);
 		calculateTimeMultiple(resultList);
 		printExecutionResultList(resultList);
 	}
@@ -54,10 +60,10 @@ public class MethodExeTimerUtil {
 	private static void calculateTimeMultiple(List<ExecutionResult> resultList) {
 		long minNanoSec = Long.MAX_VALUE;
 		for (ExecutionResult result : resultList) {
-			if(result.nanoSeconds < minNanoSec)
+			if (result.nanoSeconds < minNanoSec)
 				minNanoSec = result.nanoSeconds;
 		}
-		
+
 		for (ExecutionResult result : resultList) {
 			result.multiple = result.nanoSeconds * 1.0 / minNanoSec;
 		}
@@ -143,7 +149,7 @@ public class MethodExeTimerUtil {
 		long nanoSeconds;
 		Object result;
 		double multiple;
-		
+
 		ExecutionResult(String methodName, long time, Object result) {
 			this.methodName = methodName;
 			this.nanoSeconds = time;

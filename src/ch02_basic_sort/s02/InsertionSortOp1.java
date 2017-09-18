@@ -30,7 +30,13 @@ public class InsertionSortOp1 implements ISorter {
 		return arr;
 	}
 
-	// 对arr数组中[l, r)索引范围进行排序
+	/**
+	 * 对arr数组中[l, r)索引范围进行排序
+	 * @param arr
+	 * @param l inclusion
+	 * @param r exclusion
+	 * @return
+	 */
 	public static int[] sort(int[] arr, int l, int r) {
 //		if (l < 0)
 //			l = 0;

@@ -6,6 +6,7 @@ import util.MethodExeTimerUtil;
 /**
  * 归并排序 自底向上的实现方式 Bottom Up
  * 非递归实现，采用循环
+ * 特点：排序算法中不涉及数组寻址操作，所以可以对链表进行排序！！！
  * @author Lee
  *
  */
