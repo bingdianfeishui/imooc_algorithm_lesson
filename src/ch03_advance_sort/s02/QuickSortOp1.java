@@ -1,22 +1,24 @@
 package ch03_advance_sort.s02;
 
+import ch02_basic_sort.s02.InsertionSortOp1;
 import ch03_advance_sort.s01.MergeSortOp2;
 import util.DataSourceUtil;
 import util.ISorter;
 import util.MethodExeTimerUtil;
 
 /**
- * 快速排序 标准实现
- * 对乱序数组排序效率很高，对近乎有序（升序）的数组，效率低下（最低可退化至O(n^2)），且容易栈溢出Stackoverflow（可更改JVM参数来改善）
+ * 快速排序  优化1 
+ * 优化策略：对较短的子数组采用插入排序,效率稍有提升
+ * 对乱序数组效率稍有提高，对近乎有序数组效率仍然低下且容易栈溢出
  * 注意：将RunConfig中的VM添加如下参数 -Xss10240k，即将线程栈空间设置为10MB，否则对较大数据量和近乎有序数组排序时容易栈溢出
  * @author Lee
  *
  */
-public class QuickSort implements ISorter {
+public class QuickSortOp1 implements ISorter {
 	public static void main(String[] args) {
-		int n = 1000000;
-		int swapTimes = n / 1000;
-		ISorter[] sorters = {new QuickSort(), new MergeSortOp2() };
+		int n = 500000;
+		int swapTimes = (int) (n *0.0001);
+		ISorter[] sorters = { new QuickSort(), new QuickSortOp1(), new MergeSortOp2()};
 		MethodExeTimerUtil.batchSortIntMethodsExecution(sorters, n, swapTimes);
 	}
 
@@ -28,11 +30,14 @@ public class QuickSort implements ISorter {
 
 	// 对arr[l,r]区间进行快速排序
 	private void quickSort(int[] arr, int l, int r) {
-		if (l >= r)
+		//优化1：对size<=16的数组分段进行插入排序
+		if (r - l <= 15) {
+			InsertionSortOp1.sort(arr, l, r + 1);
 			return;
+		}
 
 		int p = partition(arr, l, r);
-		quickSort(arr, l, p);
+		quickSort(arr, l, p - 1);
 		quickSort(arr, p + 1, r);
 	}
 

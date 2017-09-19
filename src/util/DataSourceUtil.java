@@ -4,23 +4,41 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class DataSourceUtil {
-	// 生成长度为n，范围为[0, r)的随机整数数组
+	/**
+	 * 生成长度为n，范围为[0, r)的随机整数数组
+	 * @param n
+	 * @param r
+	 * @return
+	 */
 	public static int[] generateRandomIntArr(int n, int r) {
 		return generateRandomIntArr(n, 0, r);
 	}
 
-	// 生成长度为n，范围为[l, r)的随机整数数组
+	/**
+	 * 生成长度为n，范围为[l, r)的随机整数数组
+	 * @param n
+	 * @param l
+	 * @param r
+	 * @return
+	 */
 	public static int[] generateRandomIntArr(int n, int l, int r) {
 		int[] arr = new int[n];
 		Random seed = new Random(System.currentTimeMillis());
 		for (int i = 0; i < n; i++) {
-			arr[i] = seed.nextInt(n) % (r - l) + l;
+			arr[i] = seed.nextInt(r) % (r - l) + l;
 		}
 		return arr;
 	}
 
-	// 生成长度为n，近乎有序的[0,n)范围内的数组
-	// 原理：用[0,n)填充数组，然后随机选两个数交换swapTimes次
+	
+	/**
+	 * 	生成长度为n，近乎有序的[0,n)范围内的数组
+	 *  原理：用[0, n)填充数组，然后随机选两个数交换swapTimes次
+	 * @param n
+	 * @param swapTimes
+	 * @return
+	 */
+
 	public static int[] generateAlmostSortedIntArr(int n, int swapTimes) {
 		int[] arr = new int[n];
 		for (int i = 0; i < n; i++) {
@@ -54,6 +72,11 @@ public class DataSourceUtil {
 		// }
 	}
 
+	/**
+	 * 判断数组arr是否已按升序排列。若是，则返回true；若不是，则输出第一组未排序的数据并返回false
+	 * @param arr
+	 * @return
+	 */
 	public static boolean isSorted(int[] arr) {
 		for (int i = 0; i < arr.length - 1; i++) {
 			if (arr[i] > arr[i + 1]) {
